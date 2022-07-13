@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title> Plan It, Do It! </title>
+        <link rel=stylesheet href=style.css>
+        <link rel="shortcut icon" href=images/icon.png>
+        <script src=https://code.jquery.com/jquery-3.6.0.js></script>
+	    <script src=functions.js></script>
+    </head>
+    <body>
+        <div class=box>
+            <div class=innerbox>
+                <div id=topbox>
+                    <input type=text id=inputbox placeholder="Plans?" value=>
+                    <span onclick=spawnButtonText() class=button> Add </span>
+                </div>
+                <ul id=tdl>
+                    <li> <input id=inputlabel name=inputlabelname onclick="$(this).attr('contentEditable',true);" placeholder="Example Item 1"> <button class=liButton type=button onclick=this.parentNode.remove(this)>🗑️</button> <button class=liButton type=button onclick="before=$(this.parentNode).prev();$(this.parentNode).insertBefore(before);">⬆️</button> <button class=liButton type=button onclick="after=$(this.parentNode).next();$(this.parentNode).insertAfter(after);">⬇️</button></li>
+                    <li> <input id=inputlabel name=inputlabelname onclick="$(this).attr('contentEditable',true);" placeholder="Example Item 2"> <button class=liButton type=button onclick=this.parentNode.remove(this)>🗑️</button> <button class=liButton type=button onclick="before=$(this.parentNode).prev();$(this.parentNode).insertBefore(before);">⬆️</button> <button class=liButton type=button onclick="after=$(this.parentNode).next();$(this.parentNode).insertAfter(after);">⬇️</button></li>
+                </ul>
+            </div>
+        </div>
+        <div class=popbox>
+            <div id=filebox>
+                <input id=fbn type=file accept=".txt">
+                <button onclick=importList()> Upload </button>
+            </div>
+        </div>
+        <div class=menu>
+            <button class=menubutton>Menu</button>
+            <div class=menucontent>
+                <a id=dl onclick=exportList()> Download </a>
+                <a id=ul onclick="$('.popbox').css('display','block');"> Upload </a>
+                <a onclick="$(tdl).empty(); spawnButton('',1); spawnButton('',2);"> Reset </a>
+            </div>
+        </div>
+    </body>
+</html>
