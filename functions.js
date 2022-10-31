@@ -1,3 +1,5 @@
+const SAVE_KEY_LIST = 'horizonzz_list';
+
 $(document).on('keyup', function(e) 
 {
     if(e.which === 27)
@@ -101,5 +103,27 @@ function importList()
     {
         $('#fbn').replaceWith($('#fbn').clone());
     }
+}
+
+function saveLis()
+{
+    let listVals = document.getElementsByName("inputlabelname");
+    let valString = "";
+    for (let i=0; i<listVals.length; i++)
+    {
+        if (listVals[i].value != "")
+            valString = valString+listVals[i].value+"\t\t";
+    }
+    valString = valString.slice(0,-2);
+    localStorage.setItem(SAVE_KEY_LIST, valString);
+}
+
+function loadLis()
+{
+    $(tdl).empty();
+    let list_to_load = localStorage.getItem(SAVE_KEY_LIST);
+    let listArray = list_to_load.split("\t\t");
+    for (let i=0; i<listArray.length; i++)
+        spawnButton(listArray[i],3);
 }
  

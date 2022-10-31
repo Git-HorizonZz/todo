@@ -7,6 +7,15 @@
         <link rel="shortcut icon" href=images/icon.png>
         <script src=https://code.jquery.com/jquery-3.6.0.js></script>
 	    <script src=functions.js></script>
+        <script>
+            $(document).ready(() =>
+            {
+                if (localStorage.getItem('horizonzz_list') !== null)
+                {
+                    loadLis();
+                }
+            });
+        </script>
     </head>
     <body>
         <div class=box>
@@ -30,6 +39,7 @@
         <div class=menu>
             <button class=menubutton>Menu</button>
             <div class=menucontent>
+                <a id=dl onclick=saveLis()> Save </a>
                 <a id=dl onclick=exportList()> Download </a>
                 <a id=ul onclick="$('.popbox').css('display','block');"> Upload </a>
                 <a onclick="$(tdl).empty(); spawnButton('',1); spawnButton('',2);"> Reset </a>
